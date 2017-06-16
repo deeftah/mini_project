@@ -120,4 +120,46 @@ a:visited { color: white; TEXT-DECORATION: none; font-weight: normal }
 a:hover { color: white; text-decoration: underline white;  font-weight: none }
 
 /*****************************************************************/
+.containerS {
+	border: 1px solid red;
+	padding: 10px 10px 10px 10px;
+	position: relative;
+	margin: 0 auto 0 auto;
+	height: 100%;
+}
+
+.containerS .signature {
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.containerS .signature canvas {
+	border: 1px solid #999;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.containerS .buttons {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+}
+
+.containerS .sizes {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+.containerS .sizes input {
+	width: 4em;
+	text-align: center;
+}
+
+.result {
+	border: 1px solid blue;
+	margin: 30px auto 0 auto;
+	height: 220px;
+	width: 568px;
+}
           

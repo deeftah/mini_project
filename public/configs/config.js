@@ -3,7 +3,7 @@
  * @author Massinissa Saoudi <massinissa.saoudi@gmail.com>
  * @version 0.0.1
  */
-var app = angular.module('app',['ui.router']);
+var app = angular.module('app',['ui.router', 'signature']);
 
 app.config(['$stateProvider', '$locationProvider',
     function($stateProvider, $locationProvider) {
