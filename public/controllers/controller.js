@@ -33,6 +33,13 @@ app.controller('adminController', function($scope, $http, addService, searchServ
 	    }	  
     };
 	
+	$scope.deleteDocument = function($id){
+        deleteService.deleteDocument($http,$id).then(function(response) {
+        	console.log(response);
+        	refresh();  
+        });
+    };
+	
     $scope.refresh = function(){
         refresh();  
     };

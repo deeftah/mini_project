@@ -53,7 +53,21 @@ app.factory('addService', function(){
 app.factory('deleteService', function($q){
 	var deleteService =
 	{
-          
+		deleteDocument : function($http, $documentId)
+		{
+			$http.get("/admin/"+$documentId).then(successCallback, errorCallback);
+			
+			var bool = 0;
+			function successCallback(response){
+				bool = 1;
+			}
+			function errorCallback(error){
+				console.log("error");
+			}
+			var deferred = $q.defer();
+			deferred.resolve(bool);
+			return deferred.promise;
+		}
 	};
 	return deleteService;
 });
