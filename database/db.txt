@@ -1,0 +1,6 @@
+use managment
+
+db.document.insert({name: "Massinissa", description: "Computer", price: "200", quantity: "1", total: "200", type: "Quotation", status: "Pending", signature: ""})
+db.document.insert({name: "Rima", description: "Bag", price: "20", quantity: "2", total: "40", type: "Invoice", status: "Payed", signature: ""})
+db.document.insert({name: "Mathieu", description: "Car", price: "2000", quantity: "1", total: "2000", type: "Quotation", status: "Accepted", signature: ""})
+db.document.insert({name: "Alexander", description: "Phone", price: "600", quantity: "2", total: "1200", type: "Invoice", status: "Pending", signature: ""})
