@@ -162,6 +162,8 @@ app.factory('pdfMakeService', function(){
             var tax = $documentI.total * 0.21;
             var totalToPay = $documentI.total*1 + tax*1;
             var type =  $documentI.type.toUpperCase();
+			if($documentI.signature == "")
+			    $documentI.signature = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALUAAAAxCAIAAAATEH8wAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACCSURBVHhe7dIBAQAwDMOg+zfdK1gUgAbe4OYHxQ+KHxQ/KH5Q/KD4QfGD4gfFD4ofFD8oflD8oPhB8YPiB8UPih8UPyh+UPyg+EHxg+IHxQ+KHxQ/KH5Q/KD4QfGD4gfFD4ofFD8oflD8oPhB8YPiB8UPih8UPyh+UPyg+EHxg9v2ATBMjRvrdM7WAAAAAElFTkSuQmCC";
             var signature = $documentI.signature.replace(/\*/g, "/");
  
       		var pdf = {

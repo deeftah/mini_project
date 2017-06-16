@@ -50,6 +50,7 @@ app.controller('adminController', function($scope, $http, addService, searchServ
 app.controller('documentController', function($scope, $stateParams, $http, searchService, comptuationService, updateService, pdfMakeService)
 {
 	$scope.document = {};
+	
 
     var refresh = function(){
     	searchService.searchDocumentById($http, $stateParams.documentId).then(function(documentI) {
@@ -63,7 +64,7 @@ app.controller('documentController', function($scope, $stateParams, $http, searc
 	refresh();
 	
 	$scope.updateStatus = function($id,$type,$signature){
-    	var signature = comptuationService.signatureNormalize($signature,"*");
+    	var signature = comptuationService.signatureNormalize($signature,"*");	
         updateService.udateDocumentStatus($http,$id,$type,signature).then(function(response) {
         	refresh();  
         });
