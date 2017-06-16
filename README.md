@@ -1,7 +1,7 @@
 # Quotation and Invoice management
 
 An AngularJS, NoteJS and mongoDB project to manage quotations and invoicing.
-This application allows to show the list of the documents, to add, to visualise the information of an unique document and to accept quotation and pay invoice.
+This application allows to show the list of the documents, to add, to visualise the information of an unique document, to accept quotation and to pay invoice.
 In addition, this application allows to generate Pdf of a conserned document and to make digital signature.
 
 ## Getting Started
