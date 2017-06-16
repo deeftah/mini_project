@@ -33,7 +33,19 @@ app.factory('searchService', function($q){
 app.factory('addService', function(){
 	var addService =
 	{
-          	
+		addDocument : function($http, $document)
+		{
+			var bool = 0; 
+			$http.post('/admin', $document).then(successCallback, errorCallback);
+			function successCallback(response){
+				bool = 1;
+			}
+			function errorCallback(error){
+				console.log("error");
+				bool = 0; 
+			}
+			return bool;
+		}
 	};
 	return addService;
 });

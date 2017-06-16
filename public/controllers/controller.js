@@ -18,6 +18,21 @@ app.controller('adminController', function($scope, $http, addService, searchServ
 
 	refresh();
 
+	$scope.addDocument = function(){
+         
+        if($scope.document.name == null || $scope.document.description == null ||  $scope.document.quantity == null ||  $scope.document.type == null ||  $scope.document.status == null )
+    	{
+    		$scope.isShowError = true;     
+    	}    
+        else
+        {
+        	$scope.isShowSuccess = true;
+        	$scope.document.total = $scope.document.price * $scope.document.quantity;
+	        addService.addDocument($http, $scope.document);
+	        refresh();
+	    }	  
+    };
+	
     $scope.refresh = function(){
         refresh();  
     };

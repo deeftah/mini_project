@@ -38,5 +38,13 @@ app.get("/index",function(req,res){
     });
 });
 
+app.post("/admin",function(req,res){
+    dbcon.collection("document").insert(req.body, function(err,data)
+    {
+    	if (err) throw err;
+        res.json(data);
+    });
+});
+
 app.listen(port,host);
 console.log("Listening at " + host + ":"+port);
