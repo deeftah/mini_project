@@ -99,7 +99,23 @@ app.factory('deleteService', function($q){
 app.factory('updateService', function($q){
 	var updateService =
 	{
-          	
+		udateDocumentStatus : function($http, $documentId, $type, $signature)
+		{
+			
+			$http.get("/visualisation/"+$documentId+"/"+$type+"/"+$signature).then(successCallback, errorCallback);
+			
+			var bool = 0;
+			function successCallback(response){
+				bool = 1;
+			}
+			function errorCallback(error){
+				bool = 0;
+				console.log("error");
+			}
+			var deferred = $q.defer();
+			deferred.resolve(bool);
+			return deferred.promise;
+		}
 	};
 	return updateService;
 });

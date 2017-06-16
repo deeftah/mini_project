@@ -63,5 +63,8 @@ app.controller('documentController', function($scope, $stateParams, $http, searc
 	
 	$scope.updateStatus = function($id,$type,$signature){
     	var signature = comptuationService.signatureNormalize($signature,"*");
+        updateService.udateDocumentStatus($http,$id,$type,signature).then(function(response) {
+        	refresh();  
+        });
     };
 });	

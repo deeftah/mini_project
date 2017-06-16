@@ -66,5 +66,33 @@ app.get("/visualisation/:ID",function(req,res){
     });
 });
 
+var update = function($status, $id, $signature){
+	var results;
+    dbcon.collection("document").update({'_id': ObjectId($id)}, {$set: {'status' : $status, 'signature': $signature}}, function (error, res) {
+		if (error) {
+	    	throw error;
+	    }
+	    results = res;
+    });
+    return results;
+};
+
+app.get("/visualisation/:ID/:TYPE/:SIGNATURE",function(req,res){
+    var id = req.params.ID;
+    var type = req.params.TYPE;
+    var signature = req.params.SIGNATURE;
+
+    if(type=="Quotation")
+    {
+        var results = update("Accepted", id, signature);
+    	res.json(results);
+    }
+    else if(type=="Invoice")
+    {
+    	var results = update("Payed", id, signature);
+        res.json(results);
+    }	
+});
+
 app.listen(port,host);
 console.log("Listening at " + host + ":"+port);
