@@ -1,6 +1,7 @@
-app.controller('mainController', function($scope, $http, searchService)
+app.controller('mainController', function($scope)
 {
-
+    $scope.titleFirst = "For Your Business. Your Clients."
+	$scope.titleSecond = "Use INTIA Powerful Platform for Invoicing and Quotation."
 });
 
 app.controller('adminController', function($scope, $http, addService, searchService, deleteService)
