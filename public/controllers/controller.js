@@ -46,7 +46,7 @@ app.controller('adminController', function($scope, $http, addService, searchServ
 });
 
 
-app.controller('documentController', function($scope, $stateParams, $http, searchService, comptuationService, updateService)
+app.controller('documentController', function($scope, $stateParams, $http, searchService, comptuationService, updateService, pdfMakeService)
 {
 	$scope.document = {};
 
@@ -67,4 +67,9 @@ app.controller('documentController', function($scope, $stateParams, $http, searc
         	refresh();  
         });
     };
+	
+	$scope.viewPdf = function($document){
+    	pdfMakeService.pdfView($document);
+    };
+
 });	
