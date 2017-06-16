@@ -30,6 +30,12 @@ app.use(bodyParser.json());
 
 app.get("/index",function(req,res){
  
+    dbcon.collection("document").find().toArray(function (error, results) {
+		if (error) {
+	    	throw error;
+	    }
+	    res.json(results);
+    });
 });
 
 app.listen(port,host);

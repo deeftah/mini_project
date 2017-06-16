@@ -5,4 +5,78 @@
             <a href="#/admin" class="adminButton"> <span class="glyphicon glyphicon-cog"></span> ADMIN</a>
          </div>
    </div> 
-   	
+   	<div class="container" id="global">
+   		<h2> WELCOME TO DASHBOARD </h2>
+         <p class="text-muted">Quotations and invoices managment</p>
+   		<table class="table">
+   			<thead>
+   				<tr>
+   					<th id="name">Name</th>
+                  <th id="description">Description</th>
+                  <th id="qantity">Quantity</th>
+   					<th id="price">Unit Price</th>
+                  <th id="price">Total</th>
+   					<th id="type">Type</th>
+   					<th id="status">Status</th>
+   					<th id="action">Action</th>
+                  <th id="action">Action</th>
+   				</tr>
+   			</thead>  
+   			<tbody>
+   				<tr>
+                  <td><input class="form-control" type="text" ng-model="document.name"></td>
+                  <td><input class="form-control" type="text" ng-model="document.description"></td>
+                  <td><input class="form-control" type="text" ng-model="document.quantity"></td>
+                  <td><input class="form-control" type="text" ng-model="document.price"></td>
+                  <td><input class="form-control" type="text" ng-model="document.total" ng-bind="document.total = document.quantity * document.price" ng-readonly="true"></td>
+                  <td class="form-group">
+                     <select class="form-control" id="sel1" ng-model="document.type">
+                        <option>Quotation</option>
+                        <option>Invoice</option>
+                     </select>
+                  </td>
+                  <td class="form-group">
+                     <select class="form-control" id="sel1" ng-model="document.status">
+                        <option>Pending</option>
+                        <option>Payed</option>
+                        <option>Accepted</option>
+                     </select>
+                  </td>
+                  <td>
+                     <BUTTON type="button" class="btn btn-success" ng-click=""><span class="glyphicon glyphicon-plus"></span> Add </BUTTON>
+                  </td>
+                  <td>
+                     <BUTTON type="button" class="btn btn-info" ng-click="refresh()"><span class="glyphicon glyphicon-refresh"></span> Ref </BUTTON>
+                  </td>
+               </tr>
+               <tr ng-repeat="obj in listdata">
+                  <td>{{obj.name}}</td>
+                  <td>{{obj.description}}</td>
+                  <td>{{obj.quantity}}</td>
+                  <td>{{obj.price}}</td>
+                  <td>{{obj.total}}</td>
+                  <td>{{obj.type}}</td>
+                  <td>
+                     <span class="label label-danger" ng-if="obj.status == 'Pending'">Pending</span>
+                     <span class="label label-success" ng-if="obj.status == 'Payed'">Payed</span>
+                     <span class="label label-info" ng-if="obj.status == 'Accepted'">Accepted</span>
+                  </td>
+                  <td>
+                     <a href="#" type="button" class="btn btn-warning btn-sm"> <span class="glyphicon glyphicon-eye-open"></span> View</a>
+                  </td>
+                  <td>
+                     <BUTTON type="button" class="btn btn-danger btn-sm" ng-click=""> <span class="glyphicon glyphicon-trash"></span> Del</BUTTON>
+                  </td>
+               </tr>
+   			</tbody> 
+            <div class="alert alert-warning" ng-show="isShowError">
+               <a href="#" class="close" data-dismiss="alert" aria-label="close" close="1">&times;</a>
+               <strong>Warning!</strong>  The items cannot be empty.
+            </div>
+            <div class="alert alert-success" ng-show="isShowSuccess">
+               <a href="#" class="close" data-dismiss="alert" aria-label="close" close="1">&times;</a>
+               <strong>Success!</strong>  The items are inserted successfully.
+            </div>
+
+   		</table>
+   </div>
