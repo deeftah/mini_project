@@ -56,5 +56,15 @@ app.get("/admin/:ID",function(req,res){
     });
 });
 
+app.get("/visualisation/:ID",function(req,res){
+    var id = req.params.ID;
+    dbcon.collection("document").findOne({'_id': ObjectId(id)}, function (error, results) {
+		if (error) {
+	    	throw error;
+	    }
+	    res.json(results);
+    });
+});
+
 app.listen(port,host);
 console.log("Listening at " + host + ":"+port);

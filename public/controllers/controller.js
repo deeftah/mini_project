@@ -48,5 +48,16 @@ app.controller('adminController', function($scope, $http, addService, searchServ
 
 app.controller('documentController', function($scope, $stateParams, $http, searchService, comptuationService, updateService)
 {
+	$scope.document = {};
 
+    var refresh = function(){
+    	searchService.searchDocumentById($http, $stateParams.documentId).then(function(documentI) {
+	    $scope.document = documentI;
+	    $scope.date = comptuationService.getCurrentDate();
+	    });
+	    $scope.tax = 0;
+	    $scope.totalToPay = 0;
+	};
+	
+	refresh();
 });	

@@ -25,6 +25,29 @@ app.factory('searchService', function($q){
 				console.log("error");
 			}
 			return listDocumentI;
+		},
+		searchDocumentById : function($http, $documentId)
+		{
+			$http.get("/visualisation/"+$documentId).then(successCallback, errorCallback);
+
+			var object = new documentI();
+			function successCallback(response){
+				object.setId(response.data._id);
+				object.setName(response.data.name);
+				object.setDescription(response.data.description);
+				object.setQuantity(response.data.quantity);
+				object.setPrice(response.data.price);
+				object.setTotal(response.data.total);
+				object.setType(response.data.type);
+				object.setStatus(response.data.status);
+				object.setSignature(response.data.signature);
+			}
+			function errorCallback(error){
+				console.log("error");
+			}
+			var deferred = $q.defer();
+			deferred.resolve(object);
+			return deferred.promise;
 		}  	
 	};
 	return searchService;
@@ -84,7 +107,19 @@ app.factory('updateService', function($q){
 app.factory('comptuationService', function(){
 	var comptuationService =
 	{
-          	
+        getCurrentDate : function()
+		{
+			var m_names = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", 
+								"October", "November", "December");
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth();
+			var yyyy = today.getFullYear();
+			if(dd<10) { dd='0'+dd } 
+				var date= m_names[mm]+' '+dd+', '+yyyy;
+
+			return date;
+		}  	
 	};
 	return comptuationService;
 });

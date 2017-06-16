@@ -5,5 +5,136 @@
             <a href="#/admin" class="adminButton"> <span class="glyphicon glyphicon-cog"></span> ADMIN</a>
          </div>
    </div>   
-         
-         
+   	<div class="container" id="global">
+         <div class="form-group">
+            <div class="row">
+               <div class="col-xs-10">
+                  <h3 id="title-detail"> {{document.type | uppercase}} DETAIL</h3>
+               </div>
+               <div class="col-xs-1">
+                  <BUTTON id="setting-1" type="button" class="btn btn-danger btn-sm" ng-click=""> <span class="glyphicon glyphicon-file"></span> PDF</BUTTON>
+               </div>
+               <div class="col-xs-1">
+                  <BUTTON id="setting-2" type="button" class="btn btn-default btn-sm" ng-click=""> <span class="glyphicon glyphicon-print"></span> Print</BUTTON>
+               </div>     
+            </div>
+         </div>
+         <hr />
+         <div class="form-group">
+            <div class="row">
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><strong><span>Date</span><strong></h5></label>
+               </div>
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><span>{{date}}</span></h5></label>
+               </div>
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><strong><span>ID</span><strong></h5></label>
+               </div>
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><span>{{document.id}}</span></h5></label>
+               </div>
+            </div>
+         </div>
+         <div class="form-group">
+            <div class="row">
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><strong><span>Constumer</span><strong></h5></label>
+               </div>
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><span>{{document.name}}</span></h5></label>
+               </div>
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><strong><span>Representative</span><strong></h5></label>
+               </div>
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><span>Body</span></h5></label>
+               </div>
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><strong><span>Comment</span><strong></h5></label>
+               </div>
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><span>Good</span></h5></label>
+               </div>
+            </div>
+         </div>
+         <hr />
+   		<table class="table table-bordered">
+   			<thead>
+   				<tr>
+   					<th>Product</th>
+   					<th>Price</th>
+   					<th>Qantity</th>
+                  <th>Status</th>
+                  <th>Action</th>
+   					</tr>
+   			</thead>  
+   			<tbody>
+   				<tr>
+   					<td>{{document.description}}</td>
+   					<td>{{document.price}}</td>
+   					<td>{{document.quantity}}</td>
+   					<td>
+   						<span class="label label-danger" ng-if="document.status == 'Pending'">Pending</span>
+   						<span class="label label-success" ng-if="document.status == 'Payed'">Payed</span>
+   						<span class="label label-info" ng-if="document.status == 'Accepted'">Accepted</span>
+   					</td>
+                  <td>
+                     <BUTTON type="button" class="btn btn-info" ng-if="document.type == 'Invoice' && document.status == 'Payed'" disabled>Pay</BUTTON>
+                     <BUTTON type="button" class="btn btn-success" ng-if="document.type == 'Quotation' && document.status == 'Accepted'" disabled><span class="glyphicon glyphicon-ok"></span> Accept</BUTTON>
+                     <BUTTON type="button" class="btn btn-info" ng-if="document.type == 'Invoice' && document.status != 'Payed'" ng-click=""><span class="glyphicon glyphicon-credit-card"></span> Pay</BUTTON>
+                     <BUTTON type="button" class="btn btn-success" data-toggle="modal" ng-if="document.type == 'Quotation' && document.status != 'Accepted'"><span class="glyphicon glyphicon-ok"></span> Accept</BUTTON>
+                  </td>
+   				</tr>
+   			</tbody>  			
+   		</table>
+         <hr />
+         <div class="form-group">
+            <div class="row">
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><strong><span>Payment Term</span><strong></h5></label>
+               </div>
+               <div class="col-xs-4">
+                  <label for="class_type"><h5><span>1 Day</span></h5></label>
+               </div>
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><strong><span>SubTotal</span><strong></h5></label>
+               </div>
+               <div class="col-xs-4">
+                  <label for="class_type"><h5><span>{{document.total}}€</span></h5></label>
+               </div>
+            </div>
+         </div>
+         <div class="form-group">
+            <div class="row">
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><strong><span>Extra Discount</span><strong></h5></label>
+               </div>
+               <div class="col-xs-4">
+                  <label for="class_type"><h5><span>None</span></h5></label>
+               </div>
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><strong><span>Tax 21%</span><strong></h5></label>
+               </div>
+               <div class="col-xs-4">
+                  <label for="class_type"><h5><span>{{document.tax = document.total * 0.21}}€</span></h5></label>
+               </div>
+            </div>
+         </div>
+         <div class="form-group">
+            <div class="row">
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><strong><span>Tax Rule</span><strong></h5></label>
+               </div>
+               <div class="col-xs-4">
+                  <label for="class_type"><h5><span>0%</span></h5></label>
+               </div>
+               <div class="col-xs-2">
+                  <label for="class_type"><h5><strong><span>Total Payable</span><strong></h5></label>
+               </div>
+               <div class="col-xs-4">
+                  <label for="class_type"><h5><span>{{document.totalToPay = document.tax*1 + document.total*1}}€</span></h5></label>
+               </div>
+            </div>
+         </div>
+   </div>
