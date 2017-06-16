@@ -146,6 +146,42 @@ app.factory('comptuationService', function(){
 	return comptuationService;
 });
 
+app.factory('paymentService', function(){
+	
+	var stripe = Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+	
+	var paymentService =
+	{
+        Pay : function($data, $http, $id, $totalToPay)
+		{
+			console.log($id);
+			Stripe.card.createToken
+			({
+				number: $data.number,
+				cvc: $data.cvc,
+				exp_month: $data.exp_month,
+				exp_year: $data.exp_year
+			}, function(status, response){
+				console.log(status);
+				console.log(response);
+				var payment = {
+					amount: $totalToPay,
+					token: response.id,
+					id: $id
+				};
+				$http.post('/charge', payment).then(successCallback, errorCallback);
+				function successCallback(response){
+					console.log("payed");
+				}
+				function errorCallback(error){
+					console.log("error");
+				}
+			});
+		}	
+	};
+	return paymentService;
+});
+
 app.factory('pdfMakeService', function(){
 	var pdfMakeService =
 	{

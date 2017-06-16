@@ -14,6 +14,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
+var stripe = require("stripe")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
+
 var dbcon; 
 
 MongoClient.connect(url+database, function(err,db){
@@ -92,6 +94,33 @@ app.get("/visualisation/:ID/:TYPE/:SIGNATURE",function(req,res){
     	var results = update("Payed", id, signature);
         res.json(results);
     }	
+});
+
+app.post('/charge', function(req, res) {
+    var token = req.body.token;
+    var amount = req.body.amount;
+	var id = req.body.id;
+
+    var charge = stripe.charges.create({
+        amount: amount,
+        currency: "usd",
+        source: token,
+        description: "Charge for massinissa.saoudi@gmail.com"
+    },  function(err, charge) {
+        if (err) {
+            res.status(500).send(err);
+            console.log("error");
+        } else {
+            res.sendStatus(200);
+			dbcon.collection("document").update({'_id': ObjectId(id)}, {$set: {'status' : 'Payed'}}, function (error, res) {
+				if (error) {
+					throw error;
+				}
+				results = res;
+			});
+            console.log("your payement was successful");
+        }
+    });
 });
 
 app.listen(port,host);

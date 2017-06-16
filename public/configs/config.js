@@ -3,7 +3,7 @@
  * @author Massinissa Saoudi <massinissa.saoudi@gmail.com>
  * @version 0.0.1
  */
-var app = angular.module('app',['ui.router', 'signature']);
+var app = angular.module('app',['ui.router', 'signature','angularPayments']);
 
 app.config(['$stateProvider', '$locationProvider',
     function($stateProvider, $locationProvider) {
@@ -23,6 +23,11 @@ app.config(['$stateProvider', '$locationProvider',
             url: '/visualisation/:documentId',
             controller: 'documentController',
             templateUrl: 'views/visualisation.html'
+        })
+		.state('payment', {
+            url: '/payment/:documentId',
+            controller: 'paymentController',
+            templateUrl: 'views/payment.html'
         });
     }
 ]);

@@ -162,4 +162,10 @@ a:hover { color: white; text-decoration: underline white;  font-weight: none }
 	height: 220px;
 	width: 568px;
 }
-          
+/****************************************************/
+#payment {
+    position: fixed;
+    margin-right: -400px;
+    margin-left: 360px;
+}
+        

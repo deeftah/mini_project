@@ -80,9 +80,9 @@
    						<span class="label label-info" ng-if="document.status == 'Accepted'">Accepted</span>
    					</td>
                   <td>
-                     <BUTTON type="button" class="btn btn-info" ng-if="document.type == 'Invoice' && document.status == 'Payed'" disabled>Pay</BUTTON>
+                     <BUTTON type="button" class="btn btn-info" ng-if="document.type == 'Invoice' && document.status == 'Payed'" disabled><span class="glyphicon glyphicon-credit-card"></span> Pay</BUTTON>
                      <BUTTON type="button" class="btn btn-success" ng-if="document.type == 'Quotation' && document.status == 'Accepted'" disabled><span class="glyphicon glyphicon-ok"></span> Accept</BUTTON>
-                     <BUTTON type="button" class="btn btn-info" ng-if="document.type == 'Invoice' && document.status != 'Payed'" ng-click=""><span class="glyphicon glyphicon-credit-card"></span> Pay</BUTTON>
+					 <a href="#/payment/{{document.id}}" type="button" class="btn btn-info" ng-if="document.type == 'Invoice' && document.status != 'Payed'"> <span class="glyphicon glyphicon-credit-card"></span> Pay</a>
                      <BUTTON type="button" class="btn btn-success" data-toggle="modal" data-target="#signature"  ng-if="document.type == 'Quotation' && document.status != 'Accepted'"><span class="glyphicon glyphicon-ok"></span> Accept</BUTTON>
                   </td>
    				</tr>
@@ -143,7 +143,7 @@
                   <label for="class_type"><h5><strong><span>Tax 21%</span><strong></h5></label>
                </div>
                <div class="col-xs-4">
-                  <label for="class_type"><h5><span>{{document.tax = document.total * 0.21}}€</span></h5></label>
+                  <label for="class_type"><h5><span>{{document.tax = document.total * 0.21 | number : 2}}€</span></h5></label>
                </div>
             </div>
          </div>

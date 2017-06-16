@@ -1,0 +1,58 @@
+<div class="header">
+         <a href="#/" class="homeButton"><span class="glyphicon glyphicon-home"></span> HOME</a>
+         <img width="204px" height="115px" src="resources/img/intia.svg">
+         <div class="actions">
+            <a href="#/admin" class="adminButton"> <span class="glyphicon glyphicon-cog"></span> ADMIN</a>
+         </div>
+   </div>   
+   	<div class="container" id="global">
+		<div class="row" id="payment">
+			<div class="col-xs-12 col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title"> Payment Details </h3>
+						<div class="checkbox pull-right">
+							<label> <input type="checkbox" />Remember </label>
+						</div>
+					</div>
+					<div class="panel-body">
+						<form role="form" stripe-form="stripeCallback">
+						<div class="form-group">
+							<label for="cardNumber"> CARD NUMBER</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="cardNumber" ng-model="data.number" placeholder="Card Number" payments-format="card" payments-validate="card" required autofocus />
+								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-5 col-md-6">
+								<div class="form-group">
+                                <label for="expityMonth">
+                                    EXPIRY DATE</label>
+                                <div class="col-xs-6 col-lg-6 pl-ziro">
+                                    <input type="text" class="form-control" id="expityMonth" ng-model="data.exp_month" placeholder="MM" required />
+                                </div>
+                                <div class="col-xs-6 col-lg-6 pl-ziro">
+                                    <input type="text" class="form-control" id="expityYear" ng-model="data.exp_year" placeholder="YY" required /></div>
+                                </div>
+							</div>
+							<div class="col-xs-5 col-md-5 pull-right" >
+								<div class="form-group">
+									<label for="cvCode">CV CODE</label>
+									<input type="password" class="form-control" id="cvCode" ng-model="data.cvc" placeholder="CVC" payments-format="cvc" payments-validate="cvc" required />
+								</div>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active"><a href="#"><span class="badge pull-right">{{(document.total * 0.21 + document.total) | number : 2}}<span class="glyphicon glyphicon-eur"></span></span> Final Payment</a>
+					</li>
+				</ul>
+				<br/>
+				<!--button type="submit" class="btn btn-info btn-lg btn-block" role="button" ng-click="charge(document.id, document.total)"> <span class="glyphicon glyphicon-credit-card"></span> Pay </button-->
+				<a href="#/visualisation/{{document.id}}" type="button" class="btn btn-info btn-lg btn-block" role="button" ng-click="charge(document.id, document.total)"> <span class="glyphicon glyphicon-credit-card"></span> Pay </a>
+			</div>
+		</div>
+    </div>

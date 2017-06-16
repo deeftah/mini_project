@@ -75,3 +75,26 @@ app.controller('documentController', function($scope, $stateParams, $http, searc
     };
 
 });	
+
+app.controller('paymentController', function($scope,$http,$stateParams, searchService, paymentService)
+{
+	$scope.stripeCallback = function (code, result) {
+	    if (result.error) {
+	        console.log('it failed! error: ' + result.error.message);
+	    } else {
+	        console.log('success! token: ' + result.id);
+	    }
+	};
+    
+	$scope.data = {};
+	
+    searchService.searchDocumentById($http, $stateParams.documentId).then(function(documentI) {
+		$scope.document = documentI;
+	});
+	
+
+    $scope.charge = function($id, $total) {
+        paymentService.Pay($scope.data, $http, $id, $total);
+    };
+
+});
