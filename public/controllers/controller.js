@@ -60,4 +60,8 @@ app.controller('documentController', function($scope, $stateParams, $http, searc
 	};
 	
 	refresh();
+	
+	$scope.updateStatus = function($id,$type,$signature){
+    	var signature = comptuationService.signatureNormalize($signature,"*");
+    };
 });	

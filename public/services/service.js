@@ -119,7 +119,13 @@ app.factory('comptuationService', function(){
 				var date= m_names[mm]+' '+dd+', '+yyyy;
 
 			return date;
-		}  	
+		},
+		signatureNormalize : function($signature,$character)
+		{                         
+			var signature = $signature.replace(/\//g, $character);
+			return signature;
+		}
+  	
 	};
 	return comptuationService;
 });

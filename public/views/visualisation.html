@@ -109,7 +109,7 @@
                      <button type="button" class="btn btn-default" ng-click="signature = accept()">
                      <span class="glyphicon glyphicon-pencil"></span>
                      Sign</button>
-                     <BUTTON type="button" class="btn btn-default" data-toggle="modal" data-target="#signature" ng-click="" ng-disabled="!signature"><span class="glyphicon glyphicon-ok"></span> Accept</BUTTON>
+                     <BUTTON type="button" class="btn btn-default" data-toggle="modal" data-target="#signature" ng-click="updateStatus(document.id,document.type,signature.dataUrl)" ng-disabled="!signature"><span class="glyphicon glyphicon-ok"></span> Accept</BUTTON>
                   </div>
                </div>
             </div>
